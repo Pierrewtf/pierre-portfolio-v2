@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .scene {
+    width: 320px;
+    height: 200px;
+    perspective: 900px;
+    margin-bottom: 36px;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin 5s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+  }
+
+  .card:hover { animation-play-state: paused; }
+
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    backface-visibility: hidden;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .front {
+    background: #1e1e1e;
+    border: 1px solid #3a3a3a;
+  }
+
+  .back {
+    background: #181818;
+    border: 1px solid #333;
+    transform: rotateY(180deg);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* FRONT */
+  .front-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-name {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #bbb;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .chip {
+    width: 32px;
+    height: 24px;
+    background: #c8aa6e;
+    border-radius: 4px;
+    opacity: 0.85;
+  }
+
+  .front-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .card-num {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #555;
+  }
+
+  .visa-block { text-align: right; }
+
+  .visa {
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    color: #ddd;
+  }
+
+  .plat {
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: #777;
+    text-transform: uppercase;
+  }
+
+  /* BACK */
+  .mag {
+    width: 100%;
+    height: 44px;
+    background: #111;
+    margin-top: 26px;
+  }
+
+  .back-body {
+    padding: 14px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sig {
+    background: #f0ece0;
+    border-radius: 3px;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sig-lines { display: flex; flex-direction: column; gap: 4px; }
+
+  .sig-line {
+    height: 1px;
+    width: 110px;
+    background: repeating-linear-gradient(90deg, #bbb 0, #bbb 5px, transparent 5px, transparent 9px);
+  }
+
+  .cvv {
+    font-size: 13px;
+    font-weight: 700;
+    font-style: italic;
+    color: #333;
+    letter-spacing: 2px;
+  }
+
+  .back-brand {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #444;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  /* COPY */
+  .copy { text-align: center; }
+
+  .headline {
+    font-size: 26px;
+    font-weight: 200;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .headline span { color: #c8aa6e; font-weight: 500; }
+
+  .sub {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: 10px 26px;
+    border: 1px solid #c8aa6e;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #c8aa6e;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .cta:hover { background: #c8aa6e; color: #0a0a0a; }
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="card">
+
+    <div class="face front">
+      <div class="front-top">
+        <div class="card-name">Prive</div>
+        <div class="chip"></div>
+      </div>
+      <div class="front-bottom">
+        <div class="card-num">•••• •••• •••• 0024</div>
+        <div class="visa-block">
+          <div class="visa">VISA</div>
+          <div class="plat">Platinum</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="face back">
+      <div class="mag"></div>
+      <div class="back-body">
+        <div class="sig">
+          <div class="sig-lines">
+            <div class="sig-line"></div>
+            <div class="sig-line"></div>
+          </div>
+          <div class="cvv">024</div>
+        </div>
+        <div class="back-brand">Prive · Platinum</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="copy">
+  <div class="headline">Your money.<br><span>Protected.</span></div>
+  <div class="sub">Bank-grade security · Zero compromise</div>
+  <button class="cta">Get Your Card</button>
+</div>
+
+</body>
+</html>
